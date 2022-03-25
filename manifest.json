@@ -1,0 +1,32 @@
+{    "manifest_version": 3,
+    "name": "FormFillComparer",
+    "version": "0.0.1",
+    "description": "Refill and compare Flubaroo Submissions",
+    "action": {
+        "default_title": "Form Fill Comparer",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "offline_enabled": false,
+    "permissions": [
+        "webRequest",
+        "storage"
+
+    ],
+    "icons": {
+    "512": "512x512.png"
+    },
+	"host_permissions": [
+		"https://docs.google.com/*",
+        "https://forms.gle/*",
+		"https://mrgrodskichemistry.com/*"
+	]
+}
