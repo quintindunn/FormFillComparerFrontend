@@ -22,7 +22,7 @@
 
     ],
     "icons": {
-    "512": "512x512.png"
+    
     },
 	"host_permissions": [
 		"https://docs.google.com/*",
