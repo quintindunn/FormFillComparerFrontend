@@ -8,7 +8,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["<all_urls>"],
+        "matches": ["http://*/*", "https://*/*"],
             "js": ["content.js"]
         }
     ],
@@ -18,15 +18,15 @@
     "offline_enabled": false,
     "permissions": [
         "webRequest",
-        "storage"
+        "storage",
+        "activeTab",
+        "tabs"
 
     ],
     "icons": {
     
     },
 	"host_permissions": [
-		"https://docs.google.com/*",
-        "https://forms.gle/*",
-		"https://mrgrodskichemistry.com/*"
+		"<all_urls>"
 	]
 }
