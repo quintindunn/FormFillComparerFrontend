@@ -1,4 +1,4 @@
-const url = "http://192.168.1.225:84/post";
+const url = "http://10.1.57.134:84/post";
 
 // Detect URL Change for parsing mail.
 chrome.tabs.onUpdated.addListener(
@@ -32,7 +32,7 @@ chrome.webRequest.onBeforeRequest.addListener(
     function(details)
     {
         // REMOVE FOR PRODUCTION
-        const log = false;
+        const log = true;
         // #####################
         // Checks to not send unneccesary requests
         if (details.method === "GET") return;

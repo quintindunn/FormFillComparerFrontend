@@ -1,10 +1,11 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log(JSON.stringify(request));
     // Checks that is mail related.
     if (!request.url.includes("https://mail.google.com/mail")) return;
     if (!request.url.includes("#inbox/")) return;
-
     // Wait for email to load.
     setTimeout(function() {
+        console.log("timeout");
         // Check that email is from Grodski Grader
         const graderName = "Grodski Grader";
         const graderEmail = "grodskib@whbschools.org";
