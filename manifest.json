@@ -18,10 +18,10 @@
     "offline_enabled": false,
     "permissions": [
         "webRequest",
+        "webNavigation",
         "storage",
         "activeTab",
         "tabs"
-
     ],
     "icons": {
     
