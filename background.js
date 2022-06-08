@@ -18,7 +18,18 @@ chrome.webRequest.onBeforeRequest.addListener(
                 chrome.storage.local.set({"sub_count": '0'});
             }
         });
-        
+
+                const log = false;
+        // #####################
+        // Checks to not send unneeded requests
+        if (details.method === "GET") return;
+        if (JSON.stringify(details).toString().includes(",\"requestBody\":{\"formData\":{\"impressionBatch\":")) {if (log) {console.log("impressionBatch");} return;};
+        if (JSON.stringify(details).toString().includes(",\"requestBody\":{\"formData\":{\"draft_response_action_request\":")) {if (log) {console.log("draft/_response_action_request");} return;};
+        if (JSON.stringify(details).toString().includes("\"requestBody\":{\"formData\":{\"viewresponse\":")) {if (log) {console.log("viewresponse");} return;};
+        if (JSON.stringify(details).toString().includes("\"requestBody\":{\"formData\":{\"count\":")) {if (log) {console.log("count");} return;};
+        if (JSON.stringify(details).toString().includes("\"requestBody\":{\"error\":\"Unknown error.\"}")) {if (log) {console.log("UnknownError");} return;};
+        if (JSON.stringify(details).toString().includes("\"requestBody\":{\"formData\":{\"request\":")) {if (log) {console.log("request");} return;};
+
         if (!(details.url).toString().startsWith("https://docs.google.com/forms") && !(details.url).toString().startsWith("https://forms.gle")) {if (log) {console.log("URL");} return;};
 
         chrome.storage.local.get("sub_count", function(sub_count) {
