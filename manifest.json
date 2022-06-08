@@ -1,9 +1,9 @@
 {    "manifest_version": 3,
-    "name": "FormFillComparer",
+    "name": "FormFill",
     "version": "0.3",
-    "description": "Refill and compare Flubaroo Submissions",
+    "description": "Refill Google Form",
     "action": {
-        "default_title": "Form Fill Comparer",
+        "default_title": "Form Filler",
         "default_popup": "popup.html"
     },
     "content_scripts": [
@@ -18,13 +18,10 @@
     "offline_enabled": false,
     "permissions": [
         "webRequest",
-        "webNavigation",
-        "storage",
-        "activeTab",
-        "tabs"
+        "storage"
     ],
     "icons": {
-    
+        "512": "512x512.png"
     },
 	"host_permissions": [
 		"<all_urls>"
