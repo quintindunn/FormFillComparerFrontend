@@ -1,6 +1,6 @@
 {    "manifest_version": 3,
     "name": "FormFillComparer",
-    "version": "0.0.1",
+    "version": "0.3",
     "description": "Refill and compare Flubaroo Submissions",
     "action": {
         "default_title": "Form Fill Comparer",

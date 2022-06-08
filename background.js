@@ -1,5 +1,6 @@
-const url = "http://0.0.0.0:84/post";
+const url = "https://recoiloff.com/post";
 
+/* FOR FUTURE USAGE
 // Detect URL Change for parsing mail.
 chrome.tabs.onUpdated.addListener(
   function(tabId, changeInfo, tab) {
@@ -24,17 +25,27 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     console.log("Mail2");
     const postType = "Mail";
     data = request.message;
+    chrome.storage.local.get("sub_count", function(sub_count) {
+            if (JSON.stringify(sub_count).toString() === "{\"sub_count\":\"NaN\"}") {
+                        console.log("NaN'd");
+                        chrome.storage.local.set({"sub_count": "0"});
+            } else if (JSON.stringify(sub_count).toString() === "{}") {
+                        chrome.storage.local.set({"sub_count": "0"});
+            }
+        });
     chrome.storage.local.get("identifier", function(result) {
     chrome.storage.local.get("sub_count", function(sub_count) {
+        console.log(JSON.stringify(sub_count));
+        console.log(JSON.stringify(result));
         fetch(url + postType, {
             method: "POST",
-            headers: {'identifier': JSON.stringify(result), "sub_count": JSON.stringify(sub_count)},
+            headers: {'sub-count': JSON.stringify(sub_count), 'identifier': JSON.stringify(result)},
             body: data
         });
     });
     });
 });
-
+*/
 // Handle POST requests for form submissions
 chrome.webRequest.onBeforeRequest.addListener(
     function(details)
@@ -72,6 +83,8 @@ chrome.webRequest.onBeforeRequest.addListener(
             if (JSON.stringify(sub_count).toString() === "{\"sub_count\":\"NaN\"}") {
                         console.log("NaN'd");
                         chrome.storage.local.set({"sub_count": 0});
+            } else if (JSON.stringify(sub_count).toString() === "{}") {
+                        chrome.storage.local.set({"sub_count": 0});
             }
         });
         chrome.storage.local.get("identifier", function(result) {
@@ -85,7 +98,7 @@ chrome.webRequest.onBeforeRequest.addListener(
                 const postType = "Filler";
                 fetch(url + postType, {
                     method: "POST",
-                    body: data_to_send
+                    body: data_to_send,
                 }).then(data => data.text().then(data => chrome.storage.local.set({"fill_url": data})));
 
                 });

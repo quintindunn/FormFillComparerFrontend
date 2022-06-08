@@ -1,3 +1,4 @@
+/* FOR FUTURE USAGE
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log(JSON.stringify(request));
     // Set identifier if unset for database identification
@@ -26,7 +27,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }, 1000);
 
 });
-
+*/
 
 
 var wakeup = function(){
